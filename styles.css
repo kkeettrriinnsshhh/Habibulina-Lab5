@@ -50,7 +50,8 @@ h1 {
 .viewer-card {
   overflow: hidden;
   border-radius: 24px;
-  background: #FFFFFF;
+  background: #E9D4C8;
+--poster-color: #E9D4C8;
   border: 1px solid #E9D8C5;
   box-shadow: 0 16px 45px rgba(84, 53, 31, 0.10);
 }
@@ -60,8 +61,7 @@ model-viewer {
   width: 100%;
   height: min(60vw, 540px);
   min-height: 350px;
-  background: #E9D4C8;
---poster-color: #E9D4C8;
+  background: #FFFFFF ;
   --poster-color: #FFFFFF;
 }
 
