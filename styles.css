@@ -1,45 +1,268 @@
 
-/* Управление анимацией — лабораторная №6 */
+/* Общие настройки */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #FFF4E6;
+  color: #54351F;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 36px 24px 28px;
+}
+
+/* Заголовок */
+
+.header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.eyebrow {
+  display: block;
+  color: #B67A45;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 5vw, 50px);
+  font-weight: normal;
+  margin: 0 0 14px;
+  color: #54351F;
+}
+
+.header p {
+  color: #956A4A;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Карточка с 3D-моделью */
+
+.viewer-card {
+  width: 100%;
+  max-width: 835px;
+  margin: 0 auto;
+  background: white;
+  border: 1px solid #E8D4BF;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(84, 53, 31, 0.08);
+}
+
+model-viewer {
+  display: block;
+  width: 100%;
+  height: 450px;
+  background: #FFFFFF;
+  --poster-color: transparent;
+}
+
+.viewer-caption {
+  background: #F5E4D0;
+  padding: 16px;
+  text-align: center;
+  color: #54351F;
+  font-size: 12px;
+}
+
+.viewer-caption span {
+  color: #B67A45;
+  padding: 0 10px;
+}
+
+/* Возможности модели */
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px auto 0;
+}
+
+.feature {
+  background: #B67A45;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Блок управления анимацией */
 
 .animation-controls {
-  max-width: 900px;
-  margin: 28px auto 0;
-  text-align: center;
-  padding: 25px;
+  max-width: 835px;
+  margin: 25px auto 0;
+  padding: 26px 20px;
   background: #F5E4D0;
+  border: 1px solid #E8D4BF;
   border-radius: 20px;
+  text-align: center;
 }
 
 .animation-controls h2 {
+  font-family: Georgia, serif;
   color: #54351F;
-  font-size: 24px;
-  margin: 0 0 12px;
+  font-size: 26px;
+  font-weight: normal;
+  margin: 0 0 10px;
 }
 
 .animation-controls p {
   color: #79583E;
-  margin-bottom: 20px;
+  font-size: 14px;
+  margin: 0 0 20px;
 }
 
 .animation-buttons {
   display: flex;
   justify-content: center;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 12px;
 }
 
 .animation-buttons button {
   background: #B67A45;
-  color: white;
+  color: #FFFFFF;
   border: none;
   border-radius: 30px;
   padding: 13px 22px;
-  font-size: 14px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .animation-buttons button:hover {
   background: #54351F;
   transform: translateY(-2px);
+}
+
+.animation-buttons button:active {
+  transform: translateY(0);
+}
+
+.animation-buttons button:focus-visible {
+  outline: 3px solid #54351F;
+  outline-offset: 3px;
+}
+
+/* Кнопка дополненной реальности */
+
+#ar-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  background: #B67A45;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Подсказка AR */
+
+#ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  display: none;
+}
+
+#ar-prompt img {
+  width: 70px;
+}
+
+/* Полоска загрузки */
+
+.progress-bar {
+  display: block;
+  width: 60%;
+  height: 5px;
+  position: absolute;
+  left: 20%;
+  top: 50%;
+  background: #E8D4BF;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar.hide {
+  display: none;
+}
+
+.update-bar {
+  height: 100%;
+  width: 0%;
+  background: #B67A45;
+  transition: width 0.2s;
+}
+
+/* Подвал */
+
+footer {
+  text-align: center;
+  color: #956A4A;
+  font-size: 12px;
+  margin-top: 32px;
+  padding-bottom: 12px;
+}
+
+/* Адаптация для телефона */
+
+@media (max-width: 600px) {
+  .page {
+    padding: 25px 14px;
+  }
+
+  .header h1 {
+    font-size: 34px;
+  }
+
+  .header p {
+    font-size: 13px;
+  }
+
+  model-viewer {
+    height: 350px;
+  }
+
+  .viewer-caption {
+    font-size: 11px;
+  }
+
+  .feature {
+    font-size: 11px;
+    padding: 11px 15px;
+  }
+
+  .animation-controls {
+    padding: 22px 15px;
+  }
+
+  .animation-controls h2 {
+    font-size: 23px;
+  }
+
+  .animation-buttons button {
+    padding: 12px 16px;
+  }
 }
