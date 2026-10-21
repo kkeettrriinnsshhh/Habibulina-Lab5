@@ -1,109 +1,156 @@
-:not(:defined) > * {
-  display: none;
+
+:root {
+  --background: #FFF4E6;
+  --brown: #54351F;
+  --accent: #B67A45;
+  --cream: #F5E4D0;
 }
 
-html {
-  height: 100%;
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
+  background: var(--background);
+  color: var(--brown);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.page {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 45px 24px 25px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 16px 0 10px;
+  font-family: Georgia, serif;
+  font-size: clamp(34px, 6vw, 58px);
+  font-weight: 500;
+}
+
+.header p {
+  font-size: 16px;
+  color: #81644C;
+}
+
+.viewer-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid #E9D8C5;
+  box-shadow: 0 16px 45px rgba(84, 53, 31, 0.10);
 }
 
 model-viewer {
-  width: 100%;
-  height: 90%;
-  background-color: #ffffff;
-}
-
-
-.progress-bar {
   display: block;
-  width: 33%;
-  height: 10%;
-  max-height: 2%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate3d(-50%, -50%, 0);
-  border-radius: 25px;
-  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: min(60vw, 540px);
+  min-height: 350px;
+  background: #FFFFFF;
+  --poster-color: #FFFFFF;
 }
 
-.progress-bar.hide {
-  visibility: hidden;
-  transition: visibility 0.3s;
+.viewer-caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: var(--cream);
+  color: var(--brown);
+  font-size: 14px;
+  text-align: center;
 }
 
-.update-bar {
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 0%;
-  height: 100%;
-  border-radius: 25px;
-  float: left;
-  transition: width 0.3s;
+.viewer-caption span {
+  color: var(--accent);
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.feature {
+  background: var(--accent);
+  color: white;
+  border-radius: 30px;
+  padding: 13px 20px;
+  font-size: 14px;
 }
 
 #ar-button {
-  background-image: url(ar_icon.png);
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  background-position: 12px 50%;
-  background-color: #fff;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  bottom: 16px;
-  padding: 0px 16px 0px 40px;
-  font-family: Roboto Regular, Helvetica Neue, sans-serif;
-  font-size: 14px;
-  color:#4285f4;
-  height: 36px;
-  line-height: 36px;
-  border-radius: 18px;
-  border: 1px solid #DADCE0;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background: var(--brown);
+  color: white;
+  cursor: pointer;
 }
 
-#ar-button:active {
-  background-color: #E8EAED;
-}
-
-#ar-button:focus {
-  outline: none;
-}
-
-#ar-button:focus-visible {
-  outline: 1px solid #4285f4;
-}
-
-@keyframes circle {
-  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
-  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
-}
-
-@keyframes elongate {
-  from { transform: translateX(100px); }
-  to   { transform: translateX(-100px); }
-}
-
-model-viewer > #ar-prompt {
+.progress-bar {
+  display: block;
+  width: 40%;
+  height: 8px;
   position: absolute;
-  left: 50%;
-  bottom: 60px;
-  animation: elongate 2s infinite ease-in-out alternate;
+  left: 30%;
+  top: 50%;
+  border-radius: 10px;
+  background: #E9D8C5;
+}
+
+.progress-bar.hide {
   display: none;
 }
 
-model-viewer[ar-status="session-started"] > #ar-prompt {
-  display: block;
+.update-bar {
+  width: 0;
+  height: 100%;
+  border-radius: 10px;
+  background: var(--accent);
 }
 
-model-viewer > #ar-prompt > img {
-  animation: circle 4s linear infinite;
+#ar-prompt {
+  display: none;
+}
+
+footer {
+  margin-top: 45px;
+  text-align: center;
+  color: #9B816C;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 25px 14px;
+  }
+
+  model-viewer {
+    min-height: 420px;
+  }
+
+  .viewer-caption {
+    font-size: 12px;
+  }
 }
