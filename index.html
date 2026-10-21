@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Маленькое чудо в 3D</title>
-  <meta name="description" content="Интерактивная веб-презентация 3D-модели кошки">
+  <title>Маленькое чудо в 3D — Лабораторная №6</title>
+  <meta name="description" content="Интерактивная 3D-модель котёнка с анимацией">
 
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -30,6 +30,7 @@
         poster="poster.webp"
         shadow-intensity="1.53"
         autoplay
+        animation-name="Walk"
         auto-rotate
         camera-orbit="0deg 75deg 20.36m"
         field-of-view="30deg"
@@ -51,7 +52,7 @@
 
       <div class="viewer-caption">
         <span>✦</span>
-        Вращайте модель мышью и приближайте колесиком
+        Вращайте модель мышью и приближайте колёсиком
         <span>✦</span>
       </div>
     </section>
@@ -62,8 +63,19 @@
       <div class="feature">✧ Автовращение</div>
     </section>
 
+    <section class="animation-controls">
+      <h2>Анимация котёнка</h2>
+      <p>Управляйте движением 3D-модели</p>
+
+      <div class="animation-buttons">
+        <button id="play-animation">▶ Запустить</button>
+        <button id="pause-animation">⏸ Остановить</button>
+        <button id="restart-animation">↺ Повторить</button>
+      </div>
+    </section>
+
     <footer>
-      Лабораторная работа №5 · Интерактивная веб-презентация 3D-модели
+      Лабораторная работа №6 · Анимация и визуальные эффекты
     </footer>
   </main>
 
