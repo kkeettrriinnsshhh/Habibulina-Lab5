@@ -61,7 +61,7 @@ model-viewer {
   width: 100%;
   height: min(60vw, 540px);
   min-height: 350px;
-  background: #FFFFFF ;
+  background: #FFFFFF;
   --poster-color: #FFFFFF;
 }
 
